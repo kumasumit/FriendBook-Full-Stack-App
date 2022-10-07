@@ -45,12 +45,12 @@ module.exports.create = function(req, res){
                 }
                 //after creating the user redirect the user to sign in page for the new user to sign in
                 return res.redirect('sign-in');
-                //whenever you are inside callback user only the single route like home, sign-in, sign-up and not /users/sign-up or /users/sign-in
+                //whenever you are inside callback use only the single route like home, sign-in, sign-up and not /users/sign-up or /users/sign-in
             })
         }else{
             // if the user is already present send the control back to sign in page
             return res.redirect('sign-in');
-            //whenever you are inside callback user only the single route like home, sign-in, sign-up and not /users/sign-up or /users/sign-in
+            //whenever you are inside callback use only the single route like home, sign-in, sign-up and not /users/sign-up or /users/sign-in
         }
     })
 
