@@ -1,7 +1,16 @@
 const express = require('express')
-
+const expressLayouts = require('express-ejs-layouts');
 const app = express()
 const port = 8000;
+
+// for getting static files like images, js files and css files
+//we tell the app to look for images, css and script js files in assests folder inside root
+app.use(express.static('./assets'))
+app.use(expressLayouts);
+//it tells the app to use layouts as a wrapper for views
+//extract the styles/css and scripts/js from sub-pages in the main layout page
+app.set('layout extractStyles',true);
+app.set('layout extractScripts',true)
 
 //setting ejs and views
 //this will set ejs as the view engine
