@@ -109,3 +109,18 @@ module.exports.profile = function (req, res) {
         return res.redirect('/users/sign-in');
     }
 }
+
+//Action 6 for /users/profile to logout a signed in user
+//action to logout a signed in user
+module.exports.logout = function(req, res)
+{
+    //set the user_id stored in cookies.user_id to null
+    res.cookie('user_id', null);
+    //on logout we set the cookie in request object to null
+    //and hence all the information regarding the user is lost
+    //after destroying the cookie we render the sign-in page
+    // after destroying the cookie, send the control back to the sign_in page
+    return res.render('user_sign_in',{
+        title: "FriendBook | Sign In"
+    });
+}
