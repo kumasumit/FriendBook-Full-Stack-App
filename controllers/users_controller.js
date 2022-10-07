@@ -82,3 +82,30 @@ module.exports.createSession = function(req, res){
         }
     })
 }
+
+//Action 6 for /users/profile to display profile of a signed in user
+//this action displays profile details of signed in user
+module.exports.profile = function (req, res) {
+    //first check if cookies present in req contains user_id
+    if (req.cookies.user_id) {
+        //find the user by Id
+        User.findById(req.cookies.user_id, function (err, user) {
+            //here user contains complete user not just the id
+            if (user) {
+                //if the user is found send the user to the profile page
+                return res.render('user_profile', {
+                    title: "User Profile",
+                    user: user
+                })
+                //here in context we are passing title and the complete user stored in the req.cookies
+            } else {
+                //if no user is found by id in req.cookies send the control back to the sign-in page
+                return res.redirect('sign-in');
+                //here we are inside callback so use only sign-in not /users/sign-in
+            }
+        })
+    } else {
+        //if there are no cookies stored in the req.cookies send the control back to the sign in page
+        return res.redirect('/users/sign-in');
+    }
+}
