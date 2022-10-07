@@ -6,8 +6,9 @@ const port = 8000;
 // for getting static files like images, js files and css files
 //we tell the app to look for images, css and script js files in assests folder inside root
 app.use(express.static('./assets'))
+//it tells the app to use expressLayouts for configuring layouts as a wrapper for views, this must be placed above where the views are set
 app.use(expressLayouts);
-//it tells the app to use layouts as a wrapper for views
+
 //extract the styles/css and scripts/js from sub-pages in the main layout page
 app.set('layout extractStyles',true);
 app.set('layout extractScripts',true)

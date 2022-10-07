@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <title><%= title %></title>
-</head>
-<body>
-    
-    <h1>FriendBook / <%= title %></h1>
+    <link rel="stylesheet" href="/css/layout.css">
+    <%- style %>
+    <!-- place all the styles from sub-pages which inherit from this layout here  -->
+    <!-- it must be below styles for layout so that we can different styles for different sub-pages by over-riding the styles of layout page -->
+  </head>
 
-</body>
+  <body>
+    <%- include('partials/header'); -%>
+    <!-- here both headers and footer are partials -->
+    <%- body %>
+    <!-- the value of this body is whatever comes from controllers and routes
+    it can be home.ejs or profile.ejs
+    the content of home.ejs or profile.ejs gets filled here
+    -->
+
+    <%- include('partials/footer'); -%> 
+    <%- script %>
+    <!-- all the scripts from subpages which inherit from this layout will be placed here -->
+  </body>
 </html>
