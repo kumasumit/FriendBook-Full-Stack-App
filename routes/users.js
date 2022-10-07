@@ -8,5 +8,7 @@ router.get('/sign-in', usersController.signIn);
 router.get('/sign-up', usersController.signUp);
 //router to post sign-up form data or create a new user
 router.post('/create', usersController.create);
+//router to post sign-in form data or create a session/cookie for signed-in user
+router.post('/create-session', usersController.createSession);
 
 module.exports = router
