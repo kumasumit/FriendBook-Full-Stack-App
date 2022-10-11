@@ -13,11 +13,16 @@
   <body>
     <%- include('partials/header'); -%>
     <!-- here both headers and footer are partials -->
-    <%- body %>
-    <!-- the value of this body is whatever comes from controllers and routes
+    <main>
+      <!-- here main is a semantic html tag to define the main part of a page -->
+      <%- body %>
+      <!-- the value of this body is whatever comes from controllers and routes
     it can be home.ejs or profile.ejs
     the content of home.ejs or profile.ejs gets filled here
     -->
+    </main>
+    
+    
 
     <%- include('partials/footer'); -%> 
     <%- script %>
