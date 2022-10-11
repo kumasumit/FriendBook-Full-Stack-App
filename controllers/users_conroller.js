@@ -54,3 +54,10 @@ module.exports.create = function(req, res){
         }
     })
 }
+
+//Action 5 for /users/create-session to  create a new session for logged in user
+//this action handles sign_in form submission data
+module.exports.createSession = function(req, res){
+    //here session creation is handled by passport-local-strategy
+    return res.redirect('/');
+}
