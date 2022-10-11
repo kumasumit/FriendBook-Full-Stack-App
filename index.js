@@ -2,6 +2,9 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const expressLayouts = require('express-ejs-layouts');
 const db = require('./config/mongoose');
+const session = require('express-session');
+const passport = require('passport');
+const passportLocal = require('./config/passport-local-strategy');
 const cookieParser = require('cookie-parser')
 const app = express()
 const port = 8000;
@@ -32,6 +35,22 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 //views must be set before routes, so that views are loaded before rendering the routes
 
+//here we set up express-sessions to set up session
+app.use(session({
+  name: 'friendbook',
+  //todo change the secret in production
+  secret: 'blahsomething',
+  saveUninitialized: false,
+  resave:false,
+  cookie: {
+      maxAge: (1000*60*100)
+      //this is the maxage in milliseconds
+  }
+
+}))
+//here we initialize passport and passport session as soon as the app loads
+app.use(passport.initialize());
+app.use(passport.session());
 //this tells the index/root that all routes will be handled by index.js files in routes folder
 // ./routes and ./routes/index.js are the same thing
 //this tells the app to fetch all the routes from index file in routes folder
