@@ -10,16 +10,28 @@ module.exports.profile = function(req, res){
 
 //Action 2 to render sign-up page
 module.exports.signUp = function(req, res){
+    if(req.isAuthenticated())
+    {
+    //  if user is alreday signed in , send the user to the profile page
+    return res.redirect('/users/profile')
+    }
+    //if user is not signed-up, send the control to sign-up page form
     return res.render('user_sign_up', {
-        title:"FriendBook||Sign Up"
-    });
+        title: "FriendBook | Sign Up"
+    })
 }
 
 //Action 3 to render sign-in page
 module.exports.signIn = function(req, res){
+    if(req.isAuthenticated())
+    {
+    //if user is logged in, redirect it to the profile page
+    return res.redirect('/users/profile')
+    }
+    //if user is not signed-in, send the control to sign-in page form
     return res.render('user_sign_in', {
-        title: "FriendBook||Sign In"
-    });
+        title: "FriendBook | Sign In"
+    })
 }
 
 //Action 4 for /users/create to  create a new user
