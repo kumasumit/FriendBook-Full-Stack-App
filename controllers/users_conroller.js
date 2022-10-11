@@ -73,3 +73,16 @@ module.exports.createSession = function(req, res){
     //here session creation is handled by passport-local-strategy
     return res.redirect('/');
 }
+
+//Action 6 for /users/sign-out to destroy session for logged in user on clicking sign out button
+//controller for logout for signout
+module.exports.destroySession = function(req, res, next)
+{
+        //req.logout is a function given by passport
+        req.logout(function(err) {
+          if (err) { return next(err); }
+          //after session is destroyed, redirect to home page
+          res.redirect('/');
+        });
+
+}
