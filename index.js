@@ -5,11 +5,23 @@ const db = require('./config/mongoose');
 const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
-const cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser');
 const MongoStore = require('connect-mongo');
+const sassMiddleware = require('node-sass-middleware');
+
+
 const app = express()
 const port = 8000;
 
+app.use(sassMiddleware({
+  src: './assets/scss',
+  dest: './assets/css',
+  debug: true,
+  //in development debug is true, in production it is false
+  outputStyle: 'extended',
+  //in development it is extended, in production it is minified
+  prefix: '/css'
+}));
 
 
 // parse application/x-www-form-urlencoded
