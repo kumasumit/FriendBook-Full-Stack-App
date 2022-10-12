@@ -45,6 +45,21 @@
                           <input type="submit" value="Add Comment">
                       </form>
                       <% } %>
+                        <!-- container to display comments for each post -->
+                        <div class="post-comments-list">
+                          <!-- every ul has id of post for which comments are craeted  -->
+                          <ul id="post_comments_<%= post._id %>">
+                            <% for(comment of post.comments) { %>
+                            <li>
+                              <p>
+                                <%= comment.content %><br />
+                                <%= comment.user.name %>
+                              </p>
+                            </li>  
+                            <% } %>
+                          </ul>
+                      </div>
+                      <!-- post-comments-list class div closed -->
                   </div>
                   <!-- post-comments div closed -->
                  </li>

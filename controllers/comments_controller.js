@@ -10,6 +10,7 @@ module.exports.create = function(req, res){
             //if post is found only then create a comment for that post
             Comment.create({
                 content: req.body.content,
+                // req.boy.post is the hidden variable that contains the post._id for which the comment was posted
                 post: req.body.post,
                 // here post conatins the post.id of the post on which comment is created
                 user: req.user._id

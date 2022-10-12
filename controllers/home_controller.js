@@ -1,18 +1,27 @@
 const Post = require('../models/posts');
 //Action 1 for home '/'
 module.exports.home = function(req, res){
-    Post.find({}).populate('user', 'name email').exec(function(err, posts)
-    //find({}) finds all the posts with specific filter
-    {
-        //here user is populated with name,email and we dont include password for safety
-        if (err) return handleError(err);
-        return res.render('home', {
-            //here 'home' is the home.ejs file
-            title:"Home",
-            posts: posts
-            //here posts.user contains complete details of user,
-            //after populating the user with id stored in postsSchema
-            //it includes only name, email and not password
-        });
-    })
+      // loads posts and comments both
+      Post.find({})
+      //find all the posts from the database
+      .populate('user', 'name email')
+      //populate user for each post with only name and email, not password
+      .populate({
+          path: 'comments',
+          //populate comments array for each post
+          populate: {
+              //populate user inside comment for each comment inside comments array
+              path: 'user'
+          }
+      })
+      .exec(function(err, posts) {
+          if(err) {
+              return handleError(err);
+          }
+          return res.render('home', {
+              title: "Home",
+              posts: posts,
+              //here posts is the populated posts with comments and user populated
+          })
+      })
 }
