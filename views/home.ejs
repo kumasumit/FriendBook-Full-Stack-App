@@ -11,7 +11,7 @@
         <!-- show the form to create a post only if the user is signed in -->
           <!-- a form to create new posts -->
         <form action="/posts/create" id="new-post-form" method="POST">
-            <textarea name="content" cols="60" rows="7" placeholder="Type Here..."></textarea>
+            <textarea name="content" cols="60" rows="7" placeholder="Type Here..." required></textarea>
             <input type="submit" value="Post">
         </form>
           <!-- post create form closed -->
@@ -30,10 +30,25 @@
                       </small>
                       
                     </p>
+                    <!-- A container for all the comments of a particular post -->
+                    <div class="post-comments">
+                      <!-- show the create-comment form only for a logged-in user -->
+                      <% if(locals.user) { %>
+                        <!-- show the create-comment form only if user is logged-in -->
+                      <form action="/comments/create" method="POST">
+                          <input type="text" name="content" placeholder="Add Comments ...." required>
+                          <input type="hidden" name="post" value="<%= post._id %>">
+                          <!-- with each new comment we are sending post.id as a hiiden value in post variable -->
+                          <input type="submit" value="Add Comment">
+                      </form>
+                      <% } %>
+                  </div>
+                  <!-- post-comments div closed -->
                  </li>
                 <% } %>
             </ul>
         </div>
+        <!-- posts-list-container div closed -->
     </section>
     <section id="friends">
         <h1>Friends</h1>
