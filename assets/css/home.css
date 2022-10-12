@@ -8,13 +8,17 @@ body {
     width: 25%;
     height: 100vh;
     border: 1px solid grey;
+    padding: 10px;
     padding-bottom: 100px; }
-  body #home-container #posts-timeline {
+  body #home-container #posts-feed {
     width: 50%;
     border: 1px solid grey;
+    padding: 10px;
     padding-bottom: 100px;
-    background-color: white; }
+    background-color: #d1e2fd;
+    text-align: center; }
   body #home-container #friends {
     width: 25%;
+    padding: 10px;
     border: 1px solid grey;
     padding-bottom: 100px; }

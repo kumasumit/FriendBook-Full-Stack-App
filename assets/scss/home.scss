@@ -10,16 +10,21 @@ body{
         width: 25%;
         height: 100vh;
         border: 1px solid grey;
+        padding: 10px;
         padding-bottom: 100px;
+
     }
-    #home-container #posts-timeline{
+    #home-container #posts-feed{
         width: 50%;
         border: 1px solid grey;
+        padding: 10px;
         padding-bottom: 100px;
-        background-color: white;
+        background-color: rgb(209, 226, 253);
+        text-align: center;
     }
     #home-container #friends{
         width: 25%;
+        padding: 10px;
         border: 1px solid grey;
         padding-bottom: 100px;
               
