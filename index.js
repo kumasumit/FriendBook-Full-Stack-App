@@ -59,7 +59,7 @@ app.use(session({
       maxAge: (1000*60*100)
       //this is the maxage in milliseconds
   },
-  store: MongoStore.create({ mongoUrl: 'mongodb://localhost:27017/FriendBook-Development' })
+  store: MongoStore.create({ mongoUrl: 'mongodb://localhost:27017/FriendBook-Production' })
 
 }))
 //here we initialize passport and passport session as soon as the app loads

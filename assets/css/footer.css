@@ -1,0 +1,26 @@
+footer {
+  background-color: #677cf5;
+  display: flex;
+  align-content: flex-start;
+  justify-content: space-between;
+  height: max-content;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%; }
+  footer h2 {
+    margin: 0; }
+  footer ul {
+    display: flex;
+    justify-content: space-around;
+    margin: 0; }
+    footer ul li {
+      list-style: none;
+      font-weight: bold;
+      font-size: 22px;
+      margin: 0 10px;
+      color: purple; }
+      footer ul li a {
+        color: white; }
+        footer ul li a:hover {
+          color: black; }

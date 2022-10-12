@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/FriendBook-Development');
+mongoose.connect('mongodb://localhost:27017/FriendBook-Production');
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, "Error connecting to Mongo DB"));
 db.once('open', function(){

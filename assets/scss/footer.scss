@@ -1,0 +1,37 @@
+footer{
+    background-color: rgb(103, 124, 245);
+    display: flex;
+    align-content: flex-start;
+    justify-content: space-between;
+    height: max-content;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    h2{
+        margin: 0;
+    }
+    ul{
+        display: flex;
+        justify-content: space-around;
+        margin: 0;
+        li{
+            list-style: none;
+            // this is none to remove the bullet style
+            font-weight: bold;
+            font-size: 22px;
+            margin: 0 10px;
+            // here 0 is for top, bottom and 10px is for left and right
+            color: purple;
+            a{  
+                // by default the color is none
+                color: white;
+                // on hover if clicked the color is red
+                &:hover{
+                    color:black;
+                }
+            }
+        }
+    }
+
+}
