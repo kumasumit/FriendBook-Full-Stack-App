@@ -7,12 +7,33 @@
     <section id="posts-feed">
         <h1>Wall/Timeline</h1>
         <h4>Posts</h4>
-        <!-- a form to create new posts -->
+        <%if(locals.user){%>
+        <!-- show the form to create a post only if the user is signed in -->
+          <!-- a form to create new posts -->
         <form action="/posts/create" id="new-post-form" method="POST">
             <textarea name="content" cols="60" rows="7" placeholder="Type Here..."></textarea>
             <input type="submit" value="Post">
         </form>
-        <!-- post create form closed -->
+          <!-- post create form closed -->
+        <%}%>
+        <!-- A container to display all the created posts -->
+        <div id="posts-list-container">
+            <ul>
+                <% for(post of posts) {%>
+                    <!-- here posts is coming from home action of home_controller -->
+                    <!-- this is the populated posts -->
+                 <li>
+                    <p>
+                      <%= post.content %> <br/>
+                      <small>
+                        <%= post.user.name %>
+                      </small>
+                      
+                    </p>
+                 </li>
+                <% } %>
+            </ul>
+        </div>
     </section>
     <section id="friends">
         <h1>Friends</h1>

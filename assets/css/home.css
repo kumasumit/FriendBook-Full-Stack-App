@@ -15,8 +15,24 @@ body {
     border: 1px solid grey;
     padding: 10px;
     padding-bottom: 100px;
-    background-color: #d1e2fd;
-    text-align: center; }
+    background-color: #d1e2fd; }
+    body #home-container #posts-feed textarea {
+      width: 100%;
+      height: 150px;
+      padding: 12px 20px;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      background-color: #f8f8f8;
+      font-size: 16px;
+      resize: none; }
+    body #home-container #posts-feed input[type=submit] {
+      padding: 5px 15px;
+      background: #ccc;
+      border: 0 none;
+      cursor: pointer;
+      border-radius: 13px;
+      font-weight: bold; }
   body #home-container #friends {
     width: 25%;
     padding: 10px;
