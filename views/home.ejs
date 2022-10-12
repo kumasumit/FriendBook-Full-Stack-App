@@ -30,15 +30,18 @@
                       </small>
                       
                     </p>
+                    <!-- Comments Container for each post -->
                     <!-- A container for all the comments of a particular post -->
                     <div class="post-comments">
                       <!-- show the create-comment form only for a logged-in user -->
+                       <!-- show the comment submit form only to a signed-in user -->
                       <% if(locals.user) { %>
                         <!-- show the create-comment form only if user is logged-in -->
                       <form action="/comments/create" method="POST">
                           <input type="text" name="content" placeholder="Add Comments ...." required>
                           <input type="hidden" name="post" value="<%= post._id %>">
-                          <!-- with each new comment we are sending post.id as a hiiden value in post variable -->
+                          <!-- with each new comment we are sending post.id as a hidden value in post variable -->
+                           <!-- here we are passing post.id as a hidden value with the content of the comment -->
                           <input type="submit" value="Add Comment">
                       </form>
                       <% } %>
