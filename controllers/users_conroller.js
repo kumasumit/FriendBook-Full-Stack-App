@@ -3,8 +3,16 @@ const User = require('../models/users');
 
 //Action 1 for /users/profile
 module.exports.profile = function(req, res){
-    return res.render('user_profile', {
-        title: "User Profile"
+       //here we find the user from the database by id
+       User.findById(req.params.id, function(err, user){
+        //here params.id is the id of the user on which you clicked
+        res.render('user_profile', {
+            title: "User Profile",
+            profile_user: user
+            //here user is user found from the database by req.params.id from the users collection in the MongoDBdatabase
+            //here user found from the database is assigned to variable profile_user
+            
+        })
     })
 }
 

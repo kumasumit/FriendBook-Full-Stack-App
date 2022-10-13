@@ -3,6 +3,15 @@
 <div id="home-container">
   <section id="events-users">
     <h1>Events / All Users</h1>
+    <% for(user of all_users){%>
+      <!-- here user is the user from the User Schema, hence contains all the fields 
+      display all the users alongwith a link for user-profile -->
+      <p>
+        <a href="/users/profile/<%= user.id %>">
+          <%= user.name %>
+        </a>
+      </p>
+    <%}%>
   </section>
   <section id="posts-feed">
     <h1>Wall/Timeline</h1>
