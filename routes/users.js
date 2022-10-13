@@ -4,6 +4,8 @@ const passport = require('passport');
 //include the users_controller
 const usersController = require('../controllers/users_conroller');
 router.get('/profile/:id',passport.checkAuthentication, usersController.profile);
+router.post('/update/:id', passport.checkAuthentication, usersController.update);
+// only give a user to update if the user is logged-in
 //router to render sign-in and sign-up pages
 router.get('/sign-in', usersController.signIn);
 router.get('/sign-up', usersController.signUp);

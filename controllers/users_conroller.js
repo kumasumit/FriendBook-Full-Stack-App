@@ -15,7 +15,20 @@ module.exports.profile = function(req, res){
         })
     })
 }
-
+//Action 7 to update profile
+module.exports.update = function(req, res){
+    if(req.user.id == req.params.id){
+        //check if the user clicked is the same user logged-in/signed-in
+        User.findByIdAndUpdate(req.params.id, req.body, function(err, user){
+            //req.body contains name,email and password from the form, which the user can update
+            // if the update is successfull redirect to the home page
+            return res.redirect('/');
+        })
+    }else{
+        //if logged-in user is trying to update someone's else profile, then send Unauthorized request
+        return res.status(401).send('Unauthorized');
+    }
+}
 //Action 2 to render sign-up page
 module.exports.signUp = function(req, res){
     if(req.isAuthenticated())
