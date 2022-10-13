@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/css/home.css" />
-<h1>FriendBook / <%= title %></h1>
+<!-- <h1>FriendBook / <%= title %></h1> -->
 <div id="home-container">
   <section id="events-users">
     <h1>Events / All Users</h1>
@@ -28,63 +28,7 @@
         <% for(post of posts) {%>
         <!-- here posts is coming from home action of home_controller -->
         <!-- this is the populated posts -->
-        <li>
-        
-          <p>
-            <% if(locals.user && (locals.user.id == post.user.id)) {%>
-              <!-- if user is signed-in and the signed-in user owns/created the post the post -->
-              <!-- only then show the delete option -->
-              <small>
-               <a href="/posts/destroy/<%= post.id %>">X</a>
-              </small>
-          <% } %>
-            <%= post.content %> <br />
-            <small> <%= post.user.name %> </small>
-          </p>
-          <!-- Comments Container for each post -->
-          <!-- A container for all the comments of a particular post -->
-          <div class="post-comments">
-            <!-- show the create-comment form only for a logged-in user -->
-            <!-- show the comment submit form only to a signed-in user -->
-            <% if(locals.user) { %>
-            <!-- show the create-comment form only if user is logged-in -->
-            <form action="/comments/create" method="POST">
-              <input
-                type="text"
-                name="content"
-                placeholder="Add Comments ...."
-                required
-              />
-              <input type="hidden" name="post" value="<%= post._id %>" />
-              <!-- with each new comment we are sending post.id as a hidden value in post variable -->
-              <!-- here we are passing post.id as a hidden value with the content of the comment -->
-              <input type="submit" value="Add Comment" />
-            </form>
-            <% } %>
-            <!-- container to display comments for each post -->
-            <div class="post-comments-list">
-              <!-- every ul has id of post for which comments are craeted  -->
-              <ul id="post_comments_<%= post._id %>">
-                <% for(comment of post.comments) { %>
-                <li>
-                  <p>
-                    <% if(locals.user && locals.user.id == comment.user.id) { %>
-                      <!-- if user exists/or user is signed-in and if the id of the logged in user and the id of user who created the comment is same, only then show the delete button   -->
-                        <small>
-                          <a href="/comments/destroy/<%= comment.id %>">X</a>
-                        </small>
-                      <% } %>
-                    <%= comment.content %><br />
-                    <small> <%= comment.user.name %> </small>
-                  </p>
-                </li>
-                <% } %>
-              </ul>
-            </div>
-            <!-- post-comments-list class div closed -->
-          </div>
-          <!-- post-comments div closed -->
-        </li>
+          <%- include('partials/post'); -%>
         <% } %>
       </ul>
     </div>
