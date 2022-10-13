@@ -36,4 +36,5 @@ body {
     width: 25%;
     padding: 10px;
     border: 1px solid grey;
-    padding-bottom: 100px; }
+    padding-bottom: 100px;
+    height: 100vh; }
