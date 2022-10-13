@@ -29,14 +29,15 @@
         <!-- here posts is coming from home action of home_controller -->
         <!-- this is the populated posts -->
         <li>
-          <% if(locals.user && (locals.user.id == post.user.id)) {%>
-          <!-- if user is signed-in and the signed-in user owns/created the post the post -->
-          <!-- only then show the delete option -->
-          <small>
-            <a href="/posts/destroy/<%= post.id %>">X</a>
-          </small>
-          <% } %>
+        
           <p>
+            <% if(locals.user && (locals.user.id == post.user.id)) {%>
+              <!-- if user is signed-in and the signed-in user owns/created the post the post -->
+              <!-- only then show the delete option -->
+              <small>
+               <a href="/posts/destroy/<%= post.id %>">X</a>
+              </small>
+          <% } %>
             <%= post.content %> <br />
             <small> <%= post.user.name %> </small>
           </p>
@@ -67,6 +68,12 @@
                 <% for(comment of post.comments) { %>
                 <li>
                   <p>
+                    <% if(locals.user && locals.user.id == comment.user.id) { %>
+                      <!-- if user exists/or user is signed-in and if the id of the logged in user and the id of user who created the comment is same, only then show the delete button   -->
+                        <small>
+                          <a href="/comments/destroy/<%= comment.id %>">X</a>
+                        </small>
+                      <% } %>
                     <%= comment.content %><br />
                     <small> <%= comment.user.name %> </small>
                   </p>
