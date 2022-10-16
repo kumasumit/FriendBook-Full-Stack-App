@@ -13,6 +13,11 @@
   <body>
     <%- include('partials/header'); -%>
     <!-- here both headers and footer are partials -->
+    <% if(flash.success && flash.success.length>0){ %>
+      <h5>
+        <%= flash.success %>
+      </h5>
+    <% } %>
     <main id="layout-main">
       <!-- here main is a semantic html tag to define the main part of a page -->
       <%- body %>

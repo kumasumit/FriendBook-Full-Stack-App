@@ -8,7 +8,8 @@ const passportLocal = require('./config/passport-local-strategy');
 const cookieParser = require('cookie-parser');
 const MongoStore = require('connect-mongo');
 const sassMiddleware = require('node-sass-middleware');
-
+const flash = require('connect-flash');
+const customFlashMiddleware = require('./config/flashMiddleware');
 
 const app = express()
 const port = 8000;
@@ -69,6 +70,10 @@ app.use(passport.session());
 //we save the user in locals variable to display it in views
 app.use(passport.setAuthenticatedUser);
 //this will set the logged-in user in locals.user for the views as soon as the app loads.
+app.use(flash());
+//flash is stored in session which is cleared on every new request
+app.use(customFlashMiddleware.setFlash)
+//this will set the flash in req into the res.locals.flash
 
 //this tells the index/root that all routes will be handled by index.js files in routes folder
 // ./routes and ./routes/index.js are the same thing
