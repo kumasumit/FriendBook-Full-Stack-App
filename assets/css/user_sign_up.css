@@ -19,7 +19,9 @@
     #top-container #sign-up-form form input {
       margin: 5px;
       height: 20px;
-      padding: 10px; }
+      padding: 10px;
+      border: none;
+      border-bottom: 1px solid grey; }
     #top-container #sign-up-form form input[type=submit] {
       background-color: #6e6eb6;
       height: 45px; }
