@@ -21,13 +21,14 @@ module.exports.create = async function (req, res) {
       post.comments.push(comment);
       post.save();
       //save the updated post
+      req.flash('success', 'Comment published!');
       return res.redirect("/");
       //redirect to home
     }
   } catch (err) {
     //if there is any error in above process, the control will go to catch block
     // and we will log the errors in the console and return
-    console.log("Error", err);
+    req.flash('error', err);
     return;
   }
 };
@@ -47,7 +48,7 @@ module.exports.destroy = async function (req, res) {
       // comment.post holds the post._id of the post on which the comment is posted
       comment.remove();
       //remove/delete the comment
-      await Post.findByIdAndUpdate(postId, {
+      let post = await Post.findByIdAndUpdate(postId, {
         $pull: { comments: req.params.id },
       });
       //go in Posts Schema search the post by id, inside comments array of that post, pull a specific comment by id passed by user and delete it
@@ -56,15 +57,17 @@ module.exports.destroy = async function (req, res) {
       //
       //go in Posts Schema search the post by id, inside comments array of that post, pull a specific comment by id passed by user and delete it
       //this will delete the comment_id from the comments array of that particular post
+      req.flash('success', 'Comment deleted!');
     } else {
       //if the user trying to delete the comment is different from user who posted that comment
       //send the control back to the user
+      req.flash('error', 'Unauthorized');
       return res.redirect("back");
     }
   } catch (err) {
     //if there is any error in above process, the control will go to catch block
     // and we will log the errors in the console and return
-    console.log("Error", err);
+    req.flash('error', err);
     return;
   }
 };

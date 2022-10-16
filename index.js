@@ -10,7 +10,7 @@ const MongoStore = require('connect-mongo');
 const sassMiddleware = require('node-sass-middleware');
 const flash = require('connect-flash');
 const customFlashMiddleware = require('./config/flashMiddleware');
-
+require('toastr');
 const app = express()
 const port = 8000;
 

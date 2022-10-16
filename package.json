@@ -33,8 +33,10 @@
     "express-session": "^1.17.3",
     "mongoose": "^6.6.5",
     "node-sass-middleware": "^1.0.1",
+    "noty": "^3.2.0-beta-deprecated",
     "passport": "^0.6.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "toastr": "^2.1.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"

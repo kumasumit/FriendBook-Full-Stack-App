@@ -2,9 +2,12 @@
 <html lang="en">
   <head>
     <title><%= title %></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
     <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
+
     <%- style %>
     <!-- place all the styles from sub-pages which inherit from this layout here  -->
     <!-- it must be below styles for layout so that we can different styles for different sub-pages by over-riding the styles of layout page -->
@@ -13,11 +16,6 @@
   <body>
     <%- include('partials/header'); -%>
     <!-- here both headers and footer are partials -->
-    <% if(flash.success && flash.success.length>0){ %>
-      <h5>
-        <%= flash.success %>
-      </h5>
-    <% } %>
     <main id="layout-main">
       <!-- here main is a semantic html tag to define the main part of a page -->
       <%- body %>
@@ -26,8 +24,34 @@
     the content of home.ejs or profile.ejs gets filled here
     -->
     </main>
-    <%- include('partials/footer'); -%> 
+    <%- include('partials/footer'); -%>
+     
     <%- script %>
     <!-- all the scripts from subpages which inherit from this layout will be placed here -->
-  </body>
+    <!-- here we will have the taoastr notification messages -->
+  
+    <script>
+      <% if (flash.success && flash.success.length > 0) {%>
+                new Noty({
+                    theme: 'relax',
+                    text: "<%= flash.success %>",
+                    type: 'success',
+                    layout: 'topRight',
+                    timeout: 1500
+                    
+                }).show();    
+            <%} %>
+
+            <% if (flash.error && flash.error.length > 0) {%>
+                new Noty({
+                    theme: 'relax',
+                    text: "<%= flash.error %>",
+                    type: 'error',
+                    layout: 'topRight',
+                    timeout: 1500
+                    
+                }).show();    
+            <%} %>
+    </script>
+  </body>  
 </html>

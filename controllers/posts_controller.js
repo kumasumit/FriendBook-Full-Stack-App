@@ -12,12 +12,13 @@ module.exports.create = async function (req, res) {
             //here in id we are storing the id of the user who is creating the post
         })
         //after creating the post we return the control back to home
+        req.flash('success', 'Post published!');
         return res.redirect('back');
     }catch(error){
         //if there is any error in above process, the control will go to catch block
         // and we will log the errors in the console and return
-        console.log("Error", error);
-        return;
+        req.flash('error', err);
+        return res.redirect('back');
     }    
 }
 
@@ -40,16 +41,18 @@ module.exports.destroy = async function(req, res)
         await Comment.deleteMany({post: req.params.id});        
         //Comment.deleteMany() will delete more than one comment
         //after deleting posts and comments return the control back to requesting page
+        req.flash('success', 'Post and associated comments deleted!');
         return res.redirect('back');
         }
         //if users dont match, send the control back
         else{
+            req.flash('error', 'You cannot delete this post!');
             return res.redirect('back');
         }
     }catch (err) {
         //if there is any error in above process, the control will go to catch block
         // and we will log the errors in the console and return
-        console.log('Error', err);
-        return;
+        req.flash('error', err);
+        return res.redirect('back');
     }
 }
