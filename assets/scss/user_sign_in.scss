@@ -1,0 +1,45 @@
+#top-container{
+    background-color: yellow;
+    width: 30%;
+    margin: 25px auto;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
+   
+    #sign-in-form form{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin: 10px;
+        input{
+            height: 20px;
+            padding: 10px;
+            margin: 5px;
+        };
+        input[type=submit]{
+            background-color: rgb(110, 110, 182);
+            height: 45px;
+        }
+    }
+    h2{
+        margin: auto;
+    }
+    #forget-password{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 10px;
+        button{
+            height: 45px;
+            padding: 10px;
+            background-color: aquamarine;
+        }
+    
+    }
+   
+}

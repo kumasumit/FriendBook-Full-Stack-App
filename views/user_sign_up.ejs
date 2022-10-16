@@ -1,9 +1,19 @@
-<h1>Sign Up</h1>
-<form action="/users/create" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <!-- input type email is an html5 tag which validates input as email -->
-    <input type="password" name="password" placeholder="Password" required>
-    <input type="password" name="confirm_password" placeholder="Confirm Password" required>
-    <input type="submit" value="Sign Up">
-</form>
+<link rel="stylesheet" href="/css/user_sign_up.css">
+<div id="top-container">
+    <h1>Sign Up</h1>
+    <div id="sign-up-form">
+        <form action="/users/create" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <!-- input type email is an html5 tag which validates input as email -->
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+            <input type="submit" value="Sign Up">
+        </form>
+    </div>
+    <h2>or</h2>
+    <div id="sign-up-google">
+        <button> Sign Up with Google</button>
+        <p> Already a user ? <a href="/users/sign-in">LOGIN</a></p>
+    </div>    
+</div>

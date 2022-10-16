@@ -1,2 +1,19 @@
-body {
-  background-color: skyblue; }
+body #user-profile {
+  margin: 40px auto;
+  width: 50%;
+  height: max-content; }
+  body #user-profile form {
+    margin: 15px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; }
+    body #user-profile form input[type=submit] {
+      margin: 5px;
+      padding: 5px 15px;
+      background: #ccc;
+      border: 0 none;
+      cursor: pointer;
+      border-radius: 13px;
+      font-weight: bold;
+      width: max-content; }

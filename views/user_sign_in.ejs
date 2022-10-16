@@ -1,7 +1,18 @@
-<h1>Sign In</h1>
-<form action="/users/create-session" method="POST">
-    <input type="email" name="email" placeholder="Your Email" required>
-    <!-- input type email is an html5 tag which validates input as email -->
-    <input type="password" name="password" placeholder="Password" required>
-    <input type="submit" value="Sign In">
-</form>
+<div id="top-container">
+    <link rel="stylesheet" href="/css/user_sign_in.css">
+    <h1>Sign In</h1>
+    <div id="sign-in-form">
+        <form action="/users/create-session" method="POST">
+            <input type="email" name="email" placeholder="Your Email" required>
+            <!-- input type email is an html5 tag which validates input as email -->
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="submit" value="Sign In">
+        </form>
+    </div>
+    <h2>or</h2>
+    <div id="forget-password">
+        <button> Forget Password</button>
+        
+    </div>    
+    
+</div>

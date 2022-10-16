@@ -1,0 +1,35 @@
+#top-container {
+  background-color: yellow;
+  width: 30%;
+  margin: 25px auto;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 10px; }
+  #top-container #sign-in-form form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 10px; }
+    #top-container #sign-in-form form input {
+      height: 20px;
+      padding: 10px;
+      margin: 5px; }
+    #top-container #sign-in-form form input[type=submit] {
+      background-color: #6e6eb6;
+      height: 45px; }
+  #top-container h2 {
+    margin: auto; }
+  #top-container #forget-password {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 10px; }
+    #top-container #forget-password button {
+      height: 45px;
+      padding: 10px;
+      background-color: aquamarine; }
