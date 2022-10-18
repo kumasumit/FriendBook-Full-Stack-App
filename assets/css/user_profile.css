@@ -1,19 +1,35 @@
-body #user-profile {
-  margin: 40px auto;
-  width: 50%;
-  height: max-content; }
-  body #user-profile form {
-    margin: 15px;
-    padding: 10px;
+#top-container {
+  background-color: #d4d4d4;
+  width: 30%;
+  margin: 25px auto;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 10px; }
+  #top-container img {
+    align-self: center;
+    width: 100px;
+    height: 100px; }
+  #top-container #user-update-form form {
     display: flex;
     flex-direction: column;
-    justify-content: space-around; }
-    body #user-profile form input[type=submit] {
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 10px; }
+    #top-container #user-update-form form input {
+      height: 20px;
+      padding: 10px;
       margin: 5px;
-      padding: 5px 15px;
-      background: #ccc;
-      border: 0 none;
-      cursor: pointer;
-      border-radius: 13px;
-      font-weight: bold;
-      width: max-content; }
+      border: none;
+      border-bottom: 1px solid grey; }
+    #top-container #user-update-form form input[type=submit] {
+      background-color: #6e6ef7;
+      height: 45px; }
+  #top-container #user-details {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 10px; }

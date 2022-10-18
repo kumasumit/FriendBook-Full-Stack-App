@@ -1,4 +1,6 @@
 const User = require("../models/users");
+const fs = require('fs');
+const path = require('path');
 
 //Action 1 for /users/profile
 module.exports.profile = function (req, res) {
@@ -13,21 +15,7 @@ module.exports.profile = function (req, res) {
     });
   });
 };
-//Action 7 to update profile
-module.exports.update = function (req, res) {
-  if (req.user.id == req.params.id) {
-    //check if the user clicked is the same user logged-in/signed-in
-    User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
-      //req.body contains name,email and password from the form, which the user can update
-      // if the update is successfull redirect to the home page
-      req.flash('success', 'Updated!');
-      return res.redirect("/");
-    });
-  } else {
-    //if logged-in user is trying to update someone's else profile, then send Unauthorized request
-    return res.status(401).send("Unauthorized");
-  }
-};
+
 //Action 2 to render sign-up page
 module.exports.signUp = function (req, res) {
   if (req.isAuthenticated()) {
@@ -101,4 +89,51 @@ module.exports.destroySession = function (req, res, next) {
     //after session is destroyed, redirect to home page
     return res.redirect("/");
   });
+};
+
+
+//Action 7 to update profile
+module.exports.update = async function (req, res) {
+  if (req.user.id == req.params.id) {
+    //check if the user clicked is the same user logged-in/signed-in
+    try{
+      let user = await User.findById(req.params.id);
+      //find the clicked user by id
+      //call the static function uploadAvatar on the clicked User
+      User.uploadAvatar(req, res, function (err) {
+          if (err) {
+              console.log('***** Multer Error', err)
+          }
+          user.name = req.body.name;
+          //this is the new name from the form body
+          user.email = req.body.email;
+          //this is the new email from the form body
+          user.password = req.body.password;
+          //this is the new password from the form body
+          if (req.file) {
+            //if the request object hs a file
+              if (user.avatar) {
+                //if avatar alreay exits for a specific user, remove the old avatar
+                //and unlink the file path with actual file
+                  fs.unlinkSync(path.join(__dirname, '..', user.avatar));
+              }
+              user.avatar = User.avatarPath + '/' + req.file.filename;
+              //save the new path linked to new file in user.avatar
+          }
+          //finally save the modified/updated user
+          user.save();
+          // console.log(user);
+          //after user is saved show the User Updated message
+          req.flash('success', 'User Details Updated!');
+          //since the update is successful redirect to home page
+          return res.redirect('back');
+      })
+  } catch (err) {
+      console.log("Error: ", err);
+      return;
+  }
+  } else {
+    //if logged-in user is trying to update someone's else profile, then send Unauthorized request
+    return res.status(401).send("Unauthorized");
+  }
 };

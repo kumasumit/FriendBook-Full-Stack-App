@@ -10,7 +10,6 @@ const MongoStore = require('connect-mongo');
 const sassMiddleware = require('node-sass-middleware');
 const flash = require('connect-flash');
 const customFlashMiddleware = require('./config/flashMiddleware');
-require('toastr');
 const app = express()
 const port = 8000;
 
@@ -35,6 +34,9 @@ app.use(cookieParser());
 // for getting static files like images, js files and css files
 //we tell the app to look for images, css and script js files in assests folder inside root
 app.use(express.static('./assets'))
+app.use('/uploads', express.static(__dirname+"/uploads"));
+//it tells the app to look for uploads in the root/uploads folder
+
 //it tells the app to use expressLayouts for configuring layouts as a wrapper for views, this must be placed above where the views are set
 app.use(expressLayouts);
 

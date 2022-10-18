@@ -1,5 +1,5 @@
 #top-container{
-    background-color: yellow;
+    background-color: rgb(212, 212, 212);
     width: 30%;
     margin: 25px auto;
     height: max-content;
@@ -16,16 +16,20 @@
         justify-content: space-around;
         margin: 10px;
         input{
+            
             height: 20px;
             padding: 10px;
             margin: 5px;
             border: none;
             border-bottom: 1px solid grey;
+            background-color: white;
         };
         input[type=submit]{
-            background-color: rgb(110, 110, 182);
+            background-color: rgb(110, 110, 247);
             height: 45px;
-
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
         }
     }
     h2{
@@ -38,9 +42,13 @@
         justify-content: space-between;
         margin: 10px;
         button{
+            border: none;
             height: 45px;
             padding: 10px;
-            background-color: aquamarine;
+            background-color: rgb(110, 110, 247);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
         }
     
     }

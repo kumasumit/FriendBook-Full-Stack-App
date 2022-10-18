@@ -1,5 +1,5 @@
 #top-container {
-  background-color: yellow;
+  background-color: #d4d4d4;
   width: 30%;
   margin: 25px auto;
   height: max-content;
@@ -19,10 +19,14 @@
       padding: 10px;
       margin: 5px;
       border: none;
-      border-bottom: 1px solid grey; }
+      border-bottom: 1px solid grey;
+      background-color: white; }
     #top-container #sign-in-form form input[type=submit] {
-      background-color: #6e6eb6;
-      height: 45px; }
+      background-color: #6e6ef7;
+      height: 45px;
+      color: white;
+      font-size: 16px;
+      font-weight: bold; }
   #top-container h2 {
     margin: auto; }
   #top-container #forget-password {
@@ -32,6 +36,10 @@
     justify-content: space-between;
     margin: 10px; }
     #top-container #forget-password button {
+      border: none;
       height: 45px;
       padding: 10px;
-      background-color: aquamarine; }
+      background-color: #6e6ef7;
+      color: white;
+      font-size: 16px;
+      font-weight: bold; }
