@@ -20,4 +20,11 @@ router.post('/create-session', passport.authenticate(
     {failureRedirect:'/users/sign-in'},
 ), usersController.createSession);
 router.get('/sign-out', usersController.destroySession);
+
+//here we define 2 routes to sign in by google
+router.get('/auth/google', passport.authenticate('google', {scope: ['profile', 'email']}));
+//here passport authenticates using google as a strategy and set profile and email as scope as we want both the fields
+//this is the google callback route
+router.get('/auth/google/callback', passport.authenticate('google', {failureRedirect:'/users/sign-in'}), usersController.createSession);
+//here we set the callback route, after authentication using google as a stategy in case google sign-in fails we redirect to sign-in page and after successful sign-in by google we redirect to createSession Action
 module.exports = router

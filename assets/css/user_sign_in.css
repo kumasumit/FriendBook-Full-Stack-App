@@ -29,13 +29,13 @@
       font-weight: bold; }
   #top-container h2 {
     margin: auto; }
-  #top-container #forget-password {
+  #top-container #sign-in-google {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 10px; }
-    #top-container #forget-password button {
+    #top-container #sign-in-google button {
       border: none;
       height: 45px;
       padding: 10px;
