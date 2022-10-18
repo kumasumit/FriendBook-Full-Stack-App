@@ -4,14 +4,14 @@
     <% if(user.id == profile_user.id) { %>
         <!-- if logged in user is same as the user clicking to update
         only then show the update form -->
-        <form action="/users/update/<%= profile_user.id %>" method="POST">
+        <form action="/users/update/<%= profile_user.id %>" method="POST" enctype="multipart/form-data">
             <input type="text" name="name" placeholder="Your Name" value="<%= profile_user.name %>" required>
             <!-- here value contains pre-filled name of signed-in/logged-in user -->
             <input type="email" name="email" placeholder="Your Email" value="<%= profile_user.email %>" required>
             <!-- here value contains pre-filled email of logged-in user -->
             <input type="password" name="password" placeholder="Your Password" value="<%= profile_user.password %>" required>
             <!-- here value contains pre-filled email of logged-in user -->
-    
+            <input type="file" name="avatar" placeholder="Profile Picture">    
             <input type="submit" value="Update">
         </form>
     <% }else { %>
