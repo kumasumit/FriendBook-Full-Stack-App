@@ -24,9 +24,9 @@ module.exports.create = async function (req, res) {
       //we populate the name and email of the user using user stored in comments
       comment = await comment.populate('user', 'name email').execPopulate();
       //here we pass the populated comment with name and email to commentsMailer.newComment function from the mailers/comment_mailer.js file
-      commentsMailer.newComment(comment);
+      // commentsMailer.newComment(comment);
       req.flash('success', 'Comment published!');
-      return res.redirect("/");
+      return res.redirect("back");
       //redirect to home
     }
   } catch (err) {

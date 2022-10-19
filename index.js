@@ -17,7 +17,7 @@ const port = 8000;
 app.use(sassMiddleware({
   src: './assets/scss',
   dest: './assets/css',
-  debug: true,
+  debug: false,
   //in development debug is true, in production it is false
   outputStyle: 'extended',
   //in development it is extended, in production it is minified
