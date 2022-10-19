@@ -1,6 +1,6 @@
 const Comment = require("../models/comments");
 const Post = require("../models/posts");
-
+const commentsMailer = require("../mailers/comments_mailer");
 //Action 1 to create a comment
 module.exports.create = async function (req, res) {
   try {
@@ -21,6 +21,10 @@ module.exports.create = async function (req, res) {
       post.comments.push(comment);
       post.save();
       //save the updated post
+      //we populate the name and email of the user using user stored in comments
+      comment = await comment.populate('user', 'name email').execPopulate();
+      //here we pass the populated comment with name and email to commentsMailer.newComment function from the mailers/comment_mailer.js file
+      commentsMailer.newComment(comment);
       req.flash('success', 'Comment published!');
       return res.redirect("/");
       //redirect to home
